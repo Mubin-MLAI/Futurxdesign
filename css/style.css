@@ -179,7 +179,7 @@
     margin: 0 auto 35px auto;
 }
 
-.carousel-control-prev {
+/* .carousel-control-prev {
     width: 90px;
     height: 60px;
     position: absolute;
@@ -188,14 +188,64 @@
     background: var(--bs-primary);
     border-radius: 0 50px 50px 0;
     opacity: 1;
-}
+} */
 
-.carousel-control-prev:hover {
+/* .carousel-control-prev:hover {
     background: var(--bs-secondary);
     transition: .8s;
+} */
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent; /* remove background */
+    border: none;
+    opacity: 1;
+    z-index: 2;
+}
+
+.carousel-control-prev {
+    left: 10px;
 }
 
 .carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev-icon::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Custom right arrow */
+.carousel-control-next-icon::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* .carousel-control-next {
     width: 90px;
     height: 60px;
     position: absolute;
@@ -204,12 +254,22 @@
     background: var(--bs-primary);
     border-radius: 50px 0 0 50px;
     opacity: 1;
+} */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: none;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
 }
 
-.carousel-control-next:hover {
+
+/* .carousel-control-next:hover {
     background: var(--bs-secondary);
     transition: .8s;
-}
+} */
 
 .carousel-caption .carousel-content a button.carousel-content-btn1 {
     background: var(--bs-secondary);
@@ -283,10 +343,10 @@
         min-height: 400px;
     }
     
-    .carousel-item img {
+    /* .carousel-item img {
         min-height: 400px;
         object-fit: cover;
-    }
+    } */
 
     .carousel-item h1 {
         font-size: 28px !important;
