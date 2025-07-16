@@ -229,37 +229,48 @@
                                 <h1 class="text-white mb-4">Let's Start Your Project</h1>
                                 <p class="text-white mb-4">Ready to bring your vision to life? Fill out the form and
                                     we'll get back to you within 24 hours to discuss your project needs.</p>
-                                <form>
+                                <form id="contact-form">
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control bg-white border-0" id="name"
-                                                    placeholder="Your Name">
+                                                <input type="text" class="form-control bg-white border-0" name="name"
+                                                    id="name" placeholder="Your Name">
                                                 <label for="name">Your Name</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="email" class="form-control bg-white border-0" id="email"
-                                                    placeholder="Your Email">
+                                                <input type="email" class="form-control bg-white border-0" name="email"
+                                                    id="email" placeholder="Your Email"
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                                 <label for="email">Your Email</label>
                                             </div>
+
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control bg-white border-0" id="name"
-                                                    placeholder="Project Name">
+                                                <input type="text" class="form-control bg-white border-0"
+                                                    name="project_name" id="project_name" placeholder="Project Name">
                                                 <label for="project_name">Project Name</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
+                                                <input type="tel" class="form-control bg-white border-0" name="phoneno"
+                                                    id="phoneno" placeholder="Phone Number" pattern="\d{10}"
+                                                    maxlength="10" inputmode="numeric" required>
+                                                <label for="phoneno">Phone Number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
                                                 <textarea class="form-control bg-white border-0"
-                                                    placeholder="Leave a message here" id="message"
+                                                    placeholder="Leave a message here" name="message" id="message"
                                                     style="height: 100px"></textarea>
                                                 <label for="message">Your Message</label>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="time" id="form-time" />
                                         <div class="col-12">
                                             <button class="btn btn-dark w-100 py-3" type="submit">Submit</button>
                                         </div>
@@ -326,7 +337,8 @@
                     <a href="index.html">
                         <h1 class="text-white fw-bold d-block">Futurix<span class="text-secondary">Design</span> </h1>
                     </a>
-                    <p class="mt-4 text-light">At Futurix Design, we're committed to helping you stand out in a competitive marketplace by providing designs that connect, engage, and inspire action.</p>
+                    <p class="mt-4 text-light">At Futurix Design, we're committed to helping you stand out in a
+                        competitive marketplace by providing designs that connect, engage, and inspire action.</p>
                     <div class="d-flex hightech-link">
                         <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i
                                 class="fab fa-facebook-f text-primary"></i></a>
@@ -341,13 +353,17 @@
                 <div class="col-lg-3 col-md-6">
                     <a href="#" class="h3 text-secondary">Short Link</a>
                     <div class="mt-4 d-flex flex-column short-link">
-                        <a href="about.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>About
+                        <a href="about.html" class="mb-2 text-white"><i
+                                class="fas fa-angle-right text-secondary me-2"></i>About
                             us</a>
-                        <a href="contact.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Contact
+                        <a href="contact.html" class="mb-2 text-white"><i
+                                class="fas fa-angle-right text-secondary me-2"></i>Contact
                             us</a>
-                        <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Our
+                        <a href="service.html" class="mb-2 text-white"><i
+                                class="fas fa-angle-right text-secondary me-2"></i>Our
                             Services</a>
-                        <a href="project.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Our
+                        <a href="project.html" class="mb-2 text-white"><i
+                                class="fas fa-angle-right text-secondary me-2"></i>Our
                             Projects</a>
                         <!-- <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Latest
                             Blog</a> -->
@@ -372,7 +388,8 @@
                     <a href="#" class="h3 text-secondary">Contact Us</a>
                     <div class="text-white mt-4 d-flex flex-column contact-link">
                         <a href="#" class="pb-3 text-light border-bottom border-primary"><i
-                                class="fas fa-map-marker-alt text-secondary me-2"></i>1542/2,Charpool Street,Khamblawad,Navsari - 396445</a>
+                                class="fas fa-map-marker-alt text-secondary me-2"></i>1542/2,Charpool
+                            Street,Khamblawad,Navsari - 396445</a>
                         <a href="#" class="py-3 text-light border-bottom border-primary"><i
                                 class="fas fa-phone-alt text-secondary me-2"></i>Call: +91 9638-902-662</a>
                         <a href="#" class="py-3 text-light border-bottom border-primary"><i
@@ -413,6 +430,57 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("eUPPAPAkrgI3JLfSg"); // Your EmailJS Public Key
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Set the current time
+            document.getElementById('form-time').value = new Date().toLocaleString();
+
+            emailjs.sendForm('service_9eb1xrq', 'template_nbl17tb', this)
+                .then(() => {
+                    alert('Email sent successfully!');
+                    this.reset();
+                }, (error) => {
+                    console.error('EmailJS Error:', error);
+                    alert('Failed to send email. Please try again.');
+                });
+        });
+    </script>
+
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phoneno').value.trim();
+
+            const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+            const phonePattern = /^\d{10}$/;
+
+            // Validate email
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                e.preventDefault();
+                return;
+            }
+
+            // Validate phone
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                e.preventDefault();
+                return;
+            }
+
+            // Set the timestamp before sending
+            document.getElementById('form-time').value = new Date().toLocaleString();
+        });
+    </script>
 </body>
 
 </html>
