@@ -29,6 +29,13 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("eUPPAPAkrgI3JLfSg");
+        })();
+    </script>
 </head>
 
 <body>
@@ -836,7 +843,7 @@
                             </div>
                             <div class="ms-3">
                                 <h4 class="text-primary">Email Us</h4>
-                                <a class="h6" href="mailto:info@example.com" target="_blank">info@futurixdesign.com</a>
+                                <a class="h6" href="mailto:info@futurixdesign.com" target="_blank">info@futurixdesign.com</a>
                             </div>
                         </div>
                     </div>
@@ -849,37 +856,57 @@
                                 <h1 class="text-white mb-4">Let's Start Your Project</h1>
                                 <p class="text-white mb-4">Ready to bring your vision to life? Fill out the form and
                                     we'll get back to you within 24 hours to discuss your project needs.</p>
-                                <form>
+                                <form id="contact-form">
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control bg-white border-0" id="name"
+                                                <input type="text" class="form-control bg-white border-0" name="name" id="name"
                                                     placeholder="Your Name">
                                                 <label for="name">Your Name</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="email" class="form-control bg-white border-0" id="email"
-                                                    placeholder="Your Email">
+                                                <input 
+                                                  type="email" 
+                                                  class="form-control bg-white border-0" 
+                                                  name="email" 
+                                                  id="email"
+                                                  placeholder="Your Email"
+                                                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                                  required>
                                                 <label for="email">Your Email</label>
-                                            </div>
+                                              </div>
+                                              
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control bg-white border-0" id="name"
+                                                <input type="text" class="form-control bg-white border-0" name="project_name" id="project_name"
                                                     placeholder="Project Name">
                                                 <label for="project_name">Project Name</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
+                                                <input type="tel" class="form-control bg-white border-0" 
+                                                       name="phoneno" id="phoneno" 
+                                                       placeholder="Phone Number"
+                                                       pattern="\d{10}" 
+                                                       maxlength="10"
+                                                       inputmode="numeric"
+                                                       required>
+                                                <label for="phoneno">Phone Number</label>
+                                              </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
                                                 <textarea class="form-control bg-white border-0"
-                                                    placeholder="Leave a message here" id="message"
+                                                    placeholder="Leave a message here" name="message" id="message"
                                                     style="height: 100px"></textarea>
                                                 <label for="message">Your Message</label>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="time" id="form-time" />
                                         <div class="col-12">
                                             <button class="btn btn-dark w-100 py-3" type="submit">Submit</button>
                                         </div>
@@ -905,33 +932,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Appointment End -->
-                <!-- <div class="row g-5">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay=".3s">
-                        <div class="p-5 h-100 rounded contact-map">
-                            <iframe class="rounded w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.4710403339755!2d-73.82241512404069!3d40.685622471397615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26749046ee14f%3A0xea672968476d962c!2s123rd%20St%2C%20Queens%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1686493221834!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                        <div class="p-5 rounded contact-form">
-                            <div class="mb-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Your Name">
-                            </div>
-                            <div class="mb-4">
-                                <input type="email" class="form-control border-0 py-3" placeholder="Your Email">
-                            </div>
-                            <div class="mb-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Project">
-                            </div>
-                            <div class="mb-4">
-                                <textarea class="w-100 form-control border-0 py-3" rows="6" cols="10" placeholder="Message"></textarea>
-                            </div>
-                            <div class="text-start">
-                                <button class="btn bg-primary text-white py-3 px-5" type="button">Send Message</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -1030,6 +1030,60 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+    (function () {
+        emailjs.init("eUPPAPAkrgI3JLfSg"); // Your EmailJS Public Key
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Set the current time
+        document.getElementById('form-time').value = new Date().toLocaleString();
+
+        emailjs.sendForm('service_9eb1xrq', 'template_nbl17tb', this)
+        .then(() => {
+            alert('Email sent successfully!');
+            this.reset();
+        }, (error) => {
+            console.error('EmailJS Error:', error);
+            alert('Failed to send email. Please try again.');
+        });
+    });
+    </script>
+    
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+          const email = document.getElementById('email').value.trim();
+          const phone = document.getElementById('phoneno').value.trim();
+      
+          const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+          const phonePattern = /^\d{10}$/;
+      
+          // Validate email
+          if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            e.preventDefault();
+            return;
+          }
+      
+          // Validate phone
+          if (!phonePattern.test(phone)) {
+            alert("Please enter a valid 10-digit phone number.");
+            e.preventDefault();
+            return;
+          }
+      
+          // Set the timestamp before sending
+          document.getElementById('form-time').value = new Date().toLocaleString();
+        });
+      </script>
+      
+
+      
 </body>
 
 </html>
