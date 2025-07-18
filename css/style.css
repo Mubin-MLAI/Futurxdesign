@@ -124,7 +124,7 @@
 /* Optional: Different logo for mobile if needed */
 @media (max-width: 991.98px) {
     .navbar-logo {
-        height: 30px;
+        height: 60px;
     }
 }
 
