@@ -114,6 +114,26 @@
     
 }
 
+/* Logo styling */
+.navbar-logo {
+    height: 60px; /* Adjust based on your logo proportions */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Optional: Different logo for mobile if needed */
+@media (max-width: 991.98px) {
+    .navbar-logo {
+        height: 30px;
+    }
+}
+
+/* Logo hover effect */
+.navbar-logo:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
 .bg-darkblue {
     background-color: rgba(6, 32, 164, 0.8) !important;
 }
