@@ -39,7 +39,7 @@
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
-    <div class="container-fluid bg-dark py-2 d-none d-md-flex">
+    <!-- <div class="container-fluid bg-dark py-2 d-none d-md-flex">
         <div class="container">
             <div class="d-flex justify-content-between topbar">
                 <div class="top-info">
@@ -63,13 +63,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
     <div class="container-fluid bg-primary">
         <div class="container">
-            <nav class="navbar navbar-dark navbar-expand-lg py-0">
+            <nav class="navbar navbar-dark bg-darkblue navbar-expand-lg py-0">
                 <a href="index.html" class="navbar-brand">
                     <h1 class="text-white fw-bold d-block">Futurix<span class="text-secondary">Design</span> </h1>
                 </a>
@@ -369,6 +369,17 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 
 </html>
